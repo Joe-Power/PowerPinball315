@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Pick Up
+  - Ball
+  - teleport
+  - respawn
+  - return
+  - regress
   layers:
   - Default
   - TransparentFX

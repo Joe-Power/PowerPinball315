@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Points : MonoBehaviour
+public class pointCounter : MonoBehaviour
 {
     int point = 0;
-
+    int multiplier = 1;
     public TMPro.TextMeshPro pointtext;
 
     // Start is called before the first frame update
@@ -18,16 +18,25 @@ public class Points : MonoBehaviour
     public void FixedUpdate()
     {
         this.GetComponent<TMPro.TextMeshPro>().text = point.ToString();
+        pointtext.text = "x" + multiplier.ToString();
     }
 
-    public void AddPoints(int tokens)
+    public void AddPoints(int points)
     {
-        point = point + tokens;
+        point = point + points * multiplier;
     }
 
-    public void ResetPoints()
+    public void Addmultiplier(int multiplierpoints)
     {
-        point = 0;
+        multiplier = multiplier + multiplierpoints;
+    }
+
+
+
+
+   public void ResetPoints()
+    {
+      //  point = 0;
     }
 
 }

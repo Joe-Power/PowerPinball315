@@ -7,16 +7,12 @@ public class gameover : MonoBehaviour
     private Vector3 initialposition;
     public GameObject theball;
 
+    public GameObject cameraOne;
+    public GameObject cameraTwo;
     // Start is called before the first frame update
     void Start()
     {
         initialposition = theball.transform.position;
-    }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-
     }
 
     private void OnTriggerEnter(Collider collider)
@@ -24,7 +20,7 @@ public class gameover : MonoBehaviour
         if (collider.gameObject == theball)
         {
             Debug.Log("game over");
-            theball.transform.position = initialposition;
+        
         }
     }
-}
+    }
