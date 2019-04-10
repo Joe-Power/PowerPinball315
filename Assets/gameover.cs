@@ -9,9 +9,14 @@ public class gameover : MonoBehaviour
 
     public GameObject cameraOne;
     public GameObject cameraTwo;
+
+    public gameover Lives;
+    private int lives;
+
     // Start is called before the first frame update
     void Start()
     {
+        lives = 3;
         initialposition = theball.transform.position;
     }
 
@@ -20,7 +25,9 @@ public class gameover : MonoBehaviour
         if (collider.gameObject == theball)
         {
             Debug.Log("game over");
-        
+             theball.transform.position=initialposition;
+            lives = lives - 1;
+
         }
     }
     }

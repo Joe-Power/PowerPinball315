@@ -11,22 +11,33 @@ public class jump : MonoBehaviour {
     public Transform teleportDestination;
     public Text countText;
 
+    public Text livesText;
+
+
     public Text jumpText;
     private bool istouching = true;
     private int count;
 
+    private int lives;
+
     public GameObject cameraOne;
     public GameObject cameraTwo;
     public GameObject cameraThree;
+    public GameObject cameraFour;
 
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         count = 0;
+        lives = 3;
         SetCountText();
+
+        SetLivesText();
+
+        cameraOne.SetActive(true); 
+        cameraTwo.SetActive(false);
         cameraThree.SetActive(false);
-        cameraOne.SetActive(true);
     }
 
     void FixedUpdate()
@@ -48,6 +59,15 @@ if ((Input.GetKey(KeyCode.Space)) && istouching==true)
         }
         istouching = false;
     }
+    void SetLivesText()
+    {
+        livesText.text = "Balls: " + lives.ToString();
+        if (lives <= 0)
+        {
+
+        }
+    }
+
     private void OnCollisionStay()
     {
         istouching = true;
@@ -71,27 +91,52 @@ if ((Input.GetKey(KeyCode.Space)) && istouching==true)
         if (other.gameObject.CompareTag("return"))
         {
             transform.position = returnDestination1.position;
+            cameraOne.SetActive(true);
             cameraTwo.SetActive(false);
             cameraThree.SetActive(true); 
           
         }
         if (other.gameObject.CompareTag("regress"))
         {
+            cameraOne.SetActive(true); 
             cameraTwo.SetActive(false);
             cameraThree.SetActive(false);
-            cameraOne.SetActive(true);
-
+            cameraFour.SetActive(false);
         }
+        if (other.gameObject.CompareTag("progress"))
+        {
+            cameraTwo.SetActive(false);
+            cameraThree.SetActive(true);
+            cameraOne.SetActive(false);
+            cameraFour.SetActive(false);
+        }
+        if (other.gameObject.CompareTag("regress2"))
+        {
+            cameraOne.SetActive(false);
+            cameraTwo.SetActive(false);
+            cameraThree.SetActive(true);
+            cameraFour.SetActive(false);
+        }
+        if (other.gameObject.CompareTag("progress2"))
+        {
+            cameraOne.SetActive(false); 
+            cameraTwo.SetActive(false);
+            cameraThree.SetActive(false);
+            cameraFour.SetActive(true);
+        }
+        if ((other.gameObject.CompareTag("GameOver")))
+            { lives = lives - 1; }
     }
-    
+
    
-        void SetCountText ()
+    
+    void SetCountText ()
     {
-        countText.text = "Tokens: " + count.ToString ();
+        countText.text = "Tokens: " + count.ToString () + "/5";
         jumpText.text = " ";
         if (count >= 1)
         {
-            jumpText.text = "Jumpin Unlocked'";
+            jumpText.text = "Ability";
           }
         
     }

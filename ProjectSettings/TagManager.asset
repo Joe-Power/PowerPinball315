@@ -10,6 +10,10 @@ TagManager:
   - respawn
   - return
   - regress
+  - progress
+  - regress2
+  - progress2
+  - GameOver
   layers:
   - Default
   - TransparentFX
