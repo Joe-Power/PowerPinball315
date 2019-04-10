@@ -10,7 +10,7 @@ public class gameover : MonoBehaviour
     public GameObject cameraOne;
     public GameObject cameraTwo;
 
-    public gameover Lives;
+   
     private int lives;
 
     // Start is called before the first frame update
